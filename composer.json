@@ -1,0 +1,29 @@
+{
+    "name": "yab/watts",
+    "description": "Prepare your Lumen micro-service apps incredibly fast, with various commands, services, and configs.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Lantz",
+            "email": "matt@yabhq.com"
+        },
+        {
+            "name": "Chris Blackwell",
+            "email": "chris@yabhq.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "^5.2",
+        "doctrine/dbal": "^2.5",
+        "mockery/mockery": "^0.9.4",
+        "mikey179/vfsStream": "^1.6",
+        "illuminate/filesystem": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yab\\Watts\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
