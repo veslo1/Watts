@@ -1,6 +1,6 @@
 # Watts
 
-**Watts** - A powerful API based CRUD genertor for Lumen micro-services
+**Watts** - Prepare your Lumen micro-service apps incredibly fast, with various commands, services, and configs.
 
 [![Codeship](https://img.shields.io/codeship/7c9ec4f0-f8e9-0133-9b39-4e010acc8333.svg)](https://github.com/YABhq/Watts)
 
