@@ -53,7 +53,7 @@ You can test run with an existing database using the standard User table structu
 ----
 
 ## Lumen Documentation
-Please consult the documentation here: [http://lumen.laracogs.com/docs](http://lumen.laracogs.com/docs)
+Please consult the documentation here: [https://lumen.laravel.com/docs/](https://lumen.laravel.com/docs/)
 
 ## Commands
 The console commands provided by Watts are as follows:
