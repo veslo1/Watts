@@ -2,6 +2,8 @@
 
 namespace _namespace_services_;
 
+use Validator;
+use _namespace_repository_\_camel_case_;
 use _namespace_repository_\_camel_case_Repository;
 
 class _camel_case_Service
@@ -28,7 +30,11 @@ class _camel_case_Service
 
     public function create($input)
     {
-        return $this->repo->create($input);
+        if (Validator::make($input, _camel_case_::$rules)->errors()->count() === 0) {
+            return $this->repo->create($input);
+        }
+
+        return false;
     }
 
     public function find($id)

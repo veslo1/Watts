@@ -2,8 +2,8 @@
 
 namespace _namespace_repository_;
 
-use _namespace_repository_\_camel_case_;
 use Illuminate\Support\Facades\Schema;
+use _namespace_repository_\_camel_case_;
 
 class _camel_case_Repository
 {
