@@ -51,7 +51,7 @@ class Crud extends Command
      *
      * @var string
      */
-    protected $signature = 'watts:crud {table} {--migration} {--schema=}';
+    protected $signature = 'watts:crud {table} {--migration} {--schema=} {--serviceOnly}';
 
     /**
      * The console command description.
@@ -117,6 +117,7 @@ class Crud extends Command
             '_camel_case_'               => ucfirst(camel_case($table)),
             '_camel_casePlural_'         => str_plural(camel_case($table)),
             '_ucCamel_casePlural_'       => ucfirst(str_plural(camel_case($table))),
+            'tests_generated'            => 'integration,service,repository',
         ];
 
         $templateDirectory = __DIR__.'/../Templates';
@@ -155,6 +156,7 @@ class Crud extends Command
                 '_camel_case_'               => ucfirst(camel_case($table)),
                 '_camel_casePlural_'         => str_plural(camel_case($table)),
                 '_ucCamel_casePlural_'       => ucfirst(str_plural(camel_case($table))),
+                'tests_generated'            => 'integration,service,repository',
             ];
 
             $templateDirectory = __DIR__.'/../Templates';
@@ -177,11 +179,15 @@ class Crud extends Command
         }
 
         try {
+            $this->line('Building service...');
+            $crudGenerator->createService($config);
+
             $this->line('Building repository...');
             $crudGenerator->createRepository($config);
 
-            $this->line('Building service...');
-            $crudGenerator->createService($config);
+            if ($this->option('serviceOnly')) {
+                $config['tests_generated'] = 'service,repository';
+            }
 
             $this->line('Building tests...');
             $crudGenerator->createTests($config);
@@ -189,10 +195,12 @@ class Crud extends Command
             $this->line('Building factory...');
             $crudGenerator->createFactory($config);
 
-            $this->line('Building api...');
-            $this->comment("\nAdd the following to your bootstrap/app.php: \n");
-            $this->info("require __DIR__.'/../app/Http/api-routes.php'; \n");
-            $crudGenerator->createApi($config);
+            if (! $this->option('serviceOnly')) {
+                $this->line('Building api...');
+                $this->comment("\nAdd the following to your bootstrap/app.php: \n");
+                $this->info("require __DIR__.'/../app/Http/api-routes.php'; \n");
+                $crudGenerator->createApi($config);
+            }
 
         } catch (Exception $e) {
             throw new Exception("Unable to generate your CRUD: ".$e->getMessage(), 1);
