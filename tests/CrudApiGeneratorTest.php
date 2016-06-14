@@ -10,6 +10,7 @@ class CrudApiGeneratorTest extends PHPUnit_Framework_TestCase
         $this->generator = new CrudGenerator();
         $this->config = [
             'schema'                     => null,
+            'relationships'              => null,
             '_path_service_'             => vfsStream::url('Services'),
             '_path_repository_'          => vfsStream::url('Repositories/'.ucfirst('testTable')),
             '_path_model_'               => vfsStream::url('Repositories/'.ucfirst('testTable')),

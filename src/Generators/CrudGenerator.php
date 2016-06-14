@@ -34,6 +34,16 @@ class CrudGenerator
             $model = str_replace('// _camel_case_ table data', $this->prepareTableDefinition($config['schema']), $model);
         }
 
+        if (! empty($config['relationships'])) {
+            $relationships = [];
+
+            foreach (explode(',', $config['relationships']) as $relationshipExpression) {
+                $relationships[] = explode('|', $relationshipExpression);
+            }
+
+            $model = str_replace('// _camel_case_ relationships', $this->prepareModelRelationships($relationships), $model);
+        }
+
         foreach ($config as $key => $value) {
             $repo = str_replace($key, $value, $repo);
             $model = str_replace($key, $value, $model);
@@ -191,6 +201,35 @@ class CrudGenerator
         }
 
         return $tableExample;
+    }
+
+    /**
+     * Prepare a models relationships
+     *
+     * @param  array $relationships
+     * @return string
+     */
+    public function prepareModelRelationships($relationships)
+    {
+        $relationshipMethods = '';
+
+        foreach ($relationships as $relation) {
+            if (! isset($relation[2])) {
+                $relation[2] = strtolower(end(explode('\\', $relation[1])));
+            }
+
+            $method = str_singular($relation[2]);
+
+            if (stristr($relation[0], 'many')) {
+                $method = str_plural($relation[2]);
+            }
+
+            $relationshipMethods .= "\n\tpublic function ".$method."() {";
+            $relationshipMethods .= "\n\t\treturn \$this->$relation[0]($relation[1]::class);";
+            $relationshipMethods .= "\n\t}";
+        }
+
+        return $relationshipMethods;
     }
 
     /**

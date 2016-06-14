@@ -51,7 +51,11 @@ class Crud extends Command
      *
      * @var string
      */
-    protected $signature = 'watts:crud {table} {--migration} {--schema=} {--serviceOnly}';
+    protected $signature = 'watts:crud {table}
+        {--migration}
+        {--serviceOnly}
+        {--schema= : Basic schema support ie: id,increments,name:string,parent_id:integer}
+        {--relationships= : Define the relationship ie: hasOne|App\Comment|comment,hasOne|App\Rating|rating or relation|class|column (without the _id)}';
 
     /**
      * The console command description.
@@ -91,6 +95,7 @@ class Crud extends Command
         $config = [];
         $config = [
             'schema'                     => null,
+            'relationships'              => null,
             '_sectionPrefix_'            => '',
             '_sectionTablePrefix_'       => '',
             '_sectionRoutePrefix_'       => '',
@@ -132,6 +137,7 @@ class Crud extends Command
             $config = [];
             $config = [
                 'schema'                     => null,
+                'relationships'              => null,
                 '_sectionPrefix_'            => strtolower($section).'.',
                 '_sectionTablePrefix_'       => strtolower($section).'_',
                 '_sectionRoutePrefix_'       => strtolower($section).'/',
@@ -172,6 +178,10 @@ class Crud extends Command
 
         if ($this->option('schema')) {
             $config['schema'] = $this->option('schema');
+        }
+
+        if ($this->option('relationships')) {
+            $config['relationships'] = $this->option('relationships');
         }
 
         if (! isset($config['template_source'])) {
