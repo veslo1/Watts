@@ -117,7 +117,6 @@ class CrudGenerator
      */
     public function createTests($config)
     {
-        $testMakerResults = [];
         foreach (explode(',', $config['tests_generated']) as $testType) {
             $test = file_get_contents($config['template_source'].'/Tests/'.ucfirst($testType).'Test.txt');
 
@@ -235,7 +234,8 @@ class CrudGenerator
 
         foreach ($relationships as $relation) {
             if (!isset($relation[2])) {
-                $relation[2] = strtolower(end(explode('\\', $relation[1])));
+                $relationArray = explode('\\', $relation[1]);
+                $relation[2] = strtolower(end($relationArray));
             }
 
             $method = str_singular($relation[2]);
@@ -262,32 +262,57 @@ class CrudGenerator
     public function createExampleByType($type)
     {
         switch ($type) {
-            case 'bigIncrements':           return 1;
-            case 'increments':              return 1;
-            case 'string':                  return 'laravel';
-            case 'boolean':                 return 1;
-            case 'binary':                  return 'Its a bird, its a plane, no its Superman!';
-            case 'char':                    return 'a';
-            case 'ipAddress':               return '192.168.1.1';
-            case 'macAddress':              return 'X1:X2:X3:X4:X5:X6';
-            case 'json':                    return json_encode(['json' => 'test']);
-            case 'text':                    return 'I am Batman';
-            case 'longText':                return 'I am Batman';
-            case 'mediumText':              return 'I am Batman';
-            case 'dateTime':                return date('Y-m-d h:i:s');
-            case 'date':                    return date('Y-m-d');
-            case 'time':                    return date('h:i:s');
-            case 'timestamp':               return time();
-            case 'float':                   return 1.1;
-            case 'decimal':                 return 1.1;
-            case 'double':                  return 1.1;
-            case 'integer':                 return 1;
-            case 'bigInteger':              return 1;
-            case 'mediumInteger':           return 1;
-            case 'smallInteger':            return 1;
-            case 'tinyInteger':             return 1;
+            case 'bigIncrements':
+                return 1;
+            case 'increments':
+                return 1;
+            case 'string':
+                return 'laravel';
+            case 'boolean':
+                return 1;
+            case 'binary':
+                return 'Its a bird, its a plane, no its Superman!';
+            case 'char':
+                return 'a';
+            case 'ipAddress':
+                return '192.168.1.1';
+            case 'macAddress':
+                return 'X1:X2:X3:X4:X5:X6';
+            case 'json':
+                return json_encode(['json' => 'test']);
+            case 'text':
+                return 'I am Batman';
+            case 'longText':
+                return 'I am Batman';
+            case 'mediumText':
+                return 'I am Batman';
+            case 'dateTime':
+                return date('Y-m-d h:i:s');
+            case 'date':
+                return date('Y-m-d');
+            case 'time':
+                return date('h:i:s');
+            case 'timestamp':
+                return time();
+            case 'float':
+                return 1.1;
+            case 'decimal':
+                return 1.1;
+            case 'double':
+                return 1.1;
+            case 'integer':
+                return 1;
+            case 'bigInteger':
+                return 1;
+            case 'mediumInteger':
+                return 1;
+            case 'smallInteger':
+                return 1;
+            case 'tinyInteger':
+                return 1;
 
-            default:                        return 1;
+            default:
+                return 1;
         }
     }
 }

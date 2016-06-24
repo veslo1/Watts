@@ -75,6 +75,7 @@ class Crud extends Command
         $section = false;
         $crudGenerator = new CrudGenerator();
         $filesystem = new Filesystem();
+        $splitTable = [];
 
         $table = ucfirst(str_singular($this->argument('table')));
 
@@ -93,7 +94,6 @@ class Crud extends Command
             }
         }
 
-        $config = [];
         $config = [
             'schema'                     => null,
             'relationships'              => null,
@@ -126,16 +126,9 @@ class Crud extends Command
             'tests_generated'            => 'integration,service,repository',
         ];
 
-        $templateDirectory = __DIR__.'/../Templates';
-
-        if (is_dir(base_path('resources/laracogs/crud'))) {
-            $templateDirectory = base_path('resources/laracogs/crud');
-        }
-
         $config = $this->setConfig($config, $section, $table);
 
         if ($section) {
-            $config = [];
             $config = [
                 'schema'                     => null,
                 'relationships'              => null,
@@ -165,8 +158,6 @@ class Crud extends Command
                 '_ucCamel_casePlural_'       => ucfirst(str_plural(camel_case($table))),
                 'tests_generated'            => 'integration,service,repository',
             ];
-
-            $templateDirectory = __DIR__.'/../Templates';
 
             $config = $this->setConfig($config, $section, $table);
 
