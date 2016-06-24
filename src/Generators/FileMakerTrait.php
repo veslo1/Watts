@@ -8,7 +8,7 @@ trait FileMakerTrait
 {
     public function copyPreparedFiles($directory, $destination)
     {
-        $fileSystem = new Filesystem;
+        $fileSystem = new Filesystem();
 
         $files = $fileSystem->allFiles($directory);
 
@@ -24,5 +24,4 @@ trait FileMakerTrait
 
         return $fileDeployed;
     }
-
 }

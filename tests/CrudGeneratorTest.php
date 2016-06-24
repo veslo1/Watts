@@ -36,7 +36,7 @@ class CrudGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testRepositoryGenerator()
     {
-        $this->crud = vfsStream::setup("Repositories/TestTable");
+        $this->crud = vfsStream::setup('Repositories/TestTable');
         $this->generator->createRepository($this->config);
         $this->assertTrue($this->crud->hasChild('Repositories/TestTable/TestTableRepository.php'));
         $contents = $this->crud->getChild('Repositories/TestTable/TestTableRepository.php');
@@ -45,7 +45,7 @@ class CrudGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testServiceGenerator()
     {
-        $this->crud = vfsStream::setup("Services");
+        $this->crud = vfsStream::setup('Services');
         $this->generator->createService($this->config);
         $this->assertTrue($this->crud->hasChild('Services/TestTableService.php'));
         $contents = $this->crud->getChild('Services/TestTableService.php');
@@ -54,7 +54,7 @@ class CrudGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testTestGenerator()
     {
-        $this->crud = vfsStream::setup("tests");
+        $this->crud = vfsStream::setup('tests');
         $this->generator->createTests($this->config);
         $this->assertTrue($this->crud->hasChild('tests/TestTableIntegrationTest.php'));
         $contents = $this->crud->getChild('tests/TestTableIntegrationTest.php');
@@ -75,7 +75,7 @@ class CrudGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testPrepareTableDefinition()
     {
-        $table = "id:increments,name:string,details:text";
+        $table = 'id:increments,name:string,details:text';
         $result = $this->generator->prepareTableDefinition($table);
 
         $this->assertTrue((bool) strstr($result, 'id'));
@@ -85,12 +85,11 @@ class CrudGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testPrepareTableExample()
     {
-        $table = "id:increments,name:string,details:text,created_on:dateTime";
+        $table = 'id:increments,name:string,details:text,created_on:dateTime';
         $result = $this->generator->prepareTableExample($table);
 
         $this->assertTrue((bool) strstr($result, 'laravel'));
         $this->assertTrue((bool) strstr($result, 'I am Batman'));
         $this->assertTrue((bool) strstr($result, '1'));
     }
-
 }
