@@ -95,9 +95,7 @@ class CrudGenerator
     {
         $factory = file_get_contents($config['template_source'].'/Factory.txt');
 
-        if (!empty($config['schema'])) {
-            $factory = str_replace('// _camel_case_ table data', $this->prepareTableExample($config['schema']), $factory);
-        }
+        $factory = $this->tableSchema($config, $factory);
 
         $factoryMaster = base_path('database/factories/ModelFactory.php');
 
@@ -120,9 +118,7 @@ class CrudGenerator
         foreach (explode(',', $config['tests_generated']) as $testType) {
             $test = file_get_contents($config['template_source'].'/Tests/'.ucfirst($testType).'Test.txt');
 
-            if (!empty($config['schema'])) {
-                $test = str_replace('// _camel_case_ table data', $this->prepareTableExample($config['schema']), $test);
-            }
+            $test = $this->tableSchema($config, $test);
 
             foreach ($config as $key => $value) {
                 $test = str_replace($key, $value, $test);
@@ -250,6 +246,24 @@ class CrudGenerator
         }
 
         return $relationshipMethods;
+    }
+
+    /**
+     * Build a table schema
+     *
+     * @param  array $config
+     * @param  string $string
+     * @return string
+     */
+    public function tableSchema($config, $string)
+    {
+        $schema = '';
+
+        if (!empty($config['schema'])) {
+            $schema = str_replace('// _camel_case_ table data', $this->prepareTableExample($config['schema']), $string);
+        }
+
+        return $schema;
     }
 
     /**
