@@ -3,7 +3,6 @@
 namespace Yab\Watts\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use Yab\Watts\Generators\FileMakerTrait;
 
 class Prepare extends Command
@@ -31,11 +30,12 @@ class Prepare extends Command
      */
     public function handle()
     {
-        if (! file_exists(getcwd().'/.env')) {
+        if (!file_exists(getcwd().'/.env')) {
             $this->line("\n\nPlease create an .env file.\n");
         } else {
-
-            if (! is_dir(getcwd().'/config')) mkdir(getcwd().'/config', 0777, true);
+            if (!is_dir(getcwd().'/config')) {
+                mkdir(getcwd().'/config', 0777, true);
+            }
 
             $this->copyPreparedFiles(__DIR__.'/../Prepare', getcwd().'/config');
 

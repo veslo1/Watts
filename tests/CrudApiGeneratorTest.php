@@ -34,11 +34,10 @@ class CrudApiGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testApiGenerator()
     {
-        $this->crud = vfsStream::setup("Http/Controllers/Api");
+        $this->crud = vfsStream::setup('Http/Controllers/Api');
         $this->generator->createApi($this->config, false);
         $this->assertTrue($this->crud->hasChild('Http/Controllers/Api/TestTableController.php'));
         $contents = $this->crud->getChild('Http/Controllers/Api/TestTableController.php');
         $this->assertTrue(strpos($contents->getContent(), 'class TestTableController extends Controller') !== false);
     }
-
 }
