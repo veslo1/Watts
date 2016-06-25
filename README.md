@@ -3,6 +3,7 @@
 **Watts** - Prepare your Lumen micro-service apps incredibly fast, with various commands, services, and configs.
 
 [![Codeship](https://img.shields.io/codeship/7c9ec4f0-f8e9-0133-9b39-4e010acc8333.svg)](https://github.com/YABhq/Watts)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/YABhq/Watts/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/YABhq/Watts/?branch=develop)
 
 Watts is a set of commands for quickly preparing Lumen based micro-services. With single commands create full API based CRUDS with simple service layer structures.
 
