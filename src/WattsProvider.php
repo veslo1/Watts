@@ -20,6 +20,7 @@ class WattsProvider extends ServiceProvider
         */
 
         $this->commands([
+            \Yab\Watts\Console\ApiAuth::class,
             \Yab\Watts\Console\Prepare::class,
             \Yab\Watts\Console\GenerateApiKey::class,
             \Yab\Watts\Console\TableCrud::class,
