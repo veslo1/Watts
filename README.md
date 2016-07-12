@@ -10,6 +10,15 @@ Watts is a set of commands for quickly preparing Lumen based micro-services. Wit
 **Author(s):**
 * [Matt Lantz](https://github.com/mlantz) ([@mattylantz](http://twitter.com/mattylantz), matt at yabhq dot com)
 
+## Milestones
+
+### 1.0
+- [x] CRUD
+- [x] Table CRUD
+- [x] App Preparation
+- [x] API Access Key
+- [ ] JWT
+
 ## Requirements
 
 1. PHP 5.6+
