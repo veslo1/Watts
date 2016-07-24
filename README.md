@@ -84,18 +84,18 @@ The prepare action will prepare you micro-service to have a test database connec
 php artisan watts:prepare
 ```
 
-##### crud
+##### crud maker new
 The CRUD will generate a Controller, Service, Repository, Model, Migration and some unit tests for the table specified in your command. You can specify the schema or modify that later if you want.
 
 ```php
-php artisan watts:crud {table} {--migration} {--schema=}
+php artisan crudmaker:new {table} {--migration} {--schema=}
 ```
 
-##### table-crud
+##### crud maker table
 The table CRUD will review the table in your database and build a CRUD around it. Making it very easy to migrate a task to a micro-service.
 
 ```php
-php artisan watts:table-crud {table} {--migration}
+php artisan crudmaker:table {table}
 ```
 
 ## License
