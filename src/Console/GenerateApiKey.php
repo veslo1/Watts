@@ -3,12 +3,9 @@
 namespace Yab\Watts\Console;
 
 use Illuminate\Console\Command;
-use Yab\Watts\Generators\FileMakerTrait;
 
 class GenerateApiKey extends Command
 {
-    use FileMakerTrait;
-
     /**
      * The console command name.
      *

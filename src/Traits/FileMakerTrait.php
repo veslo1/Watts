@@ -1,6 +1,6 @@
 <?php
 
-namespace Yab\Watts\Generators;
+namespace Yab\Watts\Traits;
 
 use Illuminate\Filesystem\Filesystem;
 

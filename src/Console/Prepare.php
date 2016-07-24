@@ -3,7 +3,7 @@
 namespace Yab\Watts\Console;
 
 use Illuminate\Console\Command;
-use Yab\Watts\Generators\FileMakerTrait;
+use Yab\Watts\Traits\FileMakerTrait;
 
 class Prepare extends Command
 {

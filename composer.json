@@ -15,15 +15,25 @@
     "require": {
         "php": ">=5.5.9",
         "illuminate/support": "^5.2",
-        "doctrine/dbal": "^2.5",
+        "illuminate/filesystem": "^5.2",
+        "yab/crypto": "^1.0",
+        "yab/crudmaker": "^1.0"
+    },
+    "require-dev": {
+        "illuminate/container": "^5.2|^5.1",
         "mockery/mockery": "^0.9.4",
         "mikey179/vfsStream": "^1.6",
-        "illuminate/filesystem": "^5.2"
+        "orchestra/testbench": "^3.2"
     },
     "autoload": {
         "psr-4": {
             "Yab\\Watts\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
     },
     "minimum-stability": "stable"
 }

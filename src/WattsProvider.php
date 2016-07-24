@@ -15,6 +15,15 @@ class WattsProvider extends ServiceProvider
     {
         /*
         |--------------------------------------------------------------------------
+        | Providers
+        |--------------------------------------------------------------------------
+        */
+
+        $this->app->register(\Yab\Crypto\CryptoProvider::class);
+        $this->app->register(\Yab\CrudMaker\CrudMakerProvider::class);
+
+        /*
+        |--------------------------------------------------------------------------
         | Register the Commands
         |--------------------------------------------------------------------------
         */
@@ -22,8 +31,6 @@ class WattsProvider extends ServiceProvider
         $this->commands([
             \Yab\Watts\Console\Prepare::class,
             \Yab\Watts\Console\GenerateApiKey::class,
-            \Yab\Watts\Console\TableCrud::class,
-            \Yab\Watts\Console\Crud::class,
         ]);
     }
 }
