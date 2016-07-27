@@ -41,6 +41,12 @@ Add this to the `bootsrap/app.php` in the service providers array:
 Yab\Watts\WattsProvider::class
 ```
 
+### Publish assets
+We added a special command to publish your own CRUD templates and use your own config as you would in Laravel, just type:
+```php
+php artisan crudmaker:init
+```
+
 ### Uncomment!
 Taylor Otwell has very kindly left the `bootstrap/app.php` with a handful of parts commented out, which can be easily uncommented. Doing so will enable the authentication layer of Lumen. For more information click on the documentation link below.
 
