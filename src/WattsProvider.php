@@ -20,7 +20,7 @@ class WattsProvider extends ServiceProvider
         */
 
         $this->app->register(\Yab\Crypto\CryptoProvider::class);
-        $this->app->register(\Yab\CrudMaker\CrudMakerProvider::class);
+        $this->app->register(\Yab\CrudMaker\LumenCrudMakerProvider::class);
 
         /*
         |--------------------------------------------------------------------------
