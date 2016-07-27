@@ -37,7 +37,7 @@ class Prepare extends Command
                 mkdir(getcwd().'/config', 0777, true);
             }
 
-            $this->copyPreparedFiles(__DIR__.'/../Prepare', getcwd().'/config');
+            $this->copyPreparedFiles(__DIR__.'/../Prepare', getcwd());
 
             $this->info("\n\nYour micro-service is now prepared with the database config for testing.");
             $this->line("\nPlease add the following line to the php group in: phpunit.xml");
